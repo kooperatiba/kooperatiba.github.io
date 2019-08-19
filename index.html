@@ -204,12 +204,12 @@
     <script>
         var subscribe = null;
         (function() {
-            subscribe = subscribexxx;
+            subscribe = real_subscribe;
 
-            function subscribexxx() {
+            function real_subscribe() {
                 document.getElementById("btnSubmit").disabled = true;
                 const email = document.getElementById("txtEmail").value;
-                postData('https://localhost:5001/api/subscribe', {
+                postData('https://kooperatibaapi.azurewebsites.net/api/subscribe', {
                     email: email
                 }).then(function(response) {
                     document.getElementById("btnSubmit").disabled = false;
