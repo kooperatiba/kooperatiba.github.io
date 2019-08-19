@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Beta Signup</title>
+    <link rel="stylesheet" href="./lib/twitter-bootstrap/css/bootstrap.css">
+
+    <style>
+        h1 {
+            font-size: 4.438rem;
+            line-height: 1.1818;
+            font-family: AvenirNext, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            text-transform: uppercase;
+        }
+        
+        #cloud {
+            height: calc(100vh - 49px);
+            background-color: #e5e5e5;
+            /* text-shadow: 2px 2px #686666; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('./images/cloud.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        #features {
+            height: 100vh;
+            background-color: #e5e5e5;
+            /* text-shadow: 2px 2px #686666; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #aboutus {
+            height: 100vh;
+            background-color: #bbba9d93;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: grayscale();
+        }
+        
+        .input-xl {
+            font-size: 2rem;
+        }
+        
+        .team {
+            display: flex;
+            align-items: center;
+            flex-flow: row nowrap;
+            height: 100%;
+            background-color: #e5e5e5;
+        }
+        
+        .team-member {
+            margin: 10px;
+        }
+        
+        .member-pic {
+            height: 250px;
+        }
+        
+        .member-pic img {
+            height: 100%;
+            padding: 25px;
+        }
+        
+        .member-name {
+            text-align: center;
+            padding: 15px;
+        }
+        
+        .feature-container {
+            display: flex;
+            align-items: center;
+            flex-flow: row nowrap;
+            height: 100%;
+        }
+        
+        .feature {
+            height: 100%;
+            margin: 15px;
+            width: 40%;
+            text-align: center;
+            background-color: rgb(250, 250, 250);
+            padding: 10px;
+            display: flex;
+            flex-flow: column;
+            justify-content: flex-end;
+        }
+        
+        .feature-image {
+            height: 220px;
+            margin-bottom: 10px;
+            flex-grow: 1;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand navbar-light bg-light">
+            <div class="nav navbar-nav">
+                <a class="nav-item nav-link active" href="#">Kooperatiba <span class="sr-only">(current)</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <article>
+        <section id="cloud">
+            <div class="">
+                <div class="container">
+                    <h1>Bring your kooperatiba to the cloud</h1>
+                    <p class="lead">
+                        We offer <strong>free Kooperatiba-as-a-Service solutions</strong> to Community Development Fund cooperatives in the Philippines.
+                    </p>
+
+                    <p>
+                        <div class="form-group form-group-lg">
+                            <input type="text" class="form-control input-xl" name="txtEmail" id="txtEmail" aria-describedby="helpId" placeholder="email address" required>
+                        </div>
+                    </p>
+                    <p>
+                        <a id="btnSubmit" class="btn btn-success btn-lg" href="#" role="button" onclick="subscribe();">Submit</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="">
+                <div class="container">
+                    <h1>Kooperatiba as a Service</h1>
+                    <div class="feature-container">
+                        <div class="feature">
+                            <div class="feature-image">
+                                <img class="img-thumbnail" src="./images/calculator.jpg" alt="accounting image">
+                            </div>
+                            <h3>Accounting</h3>
+                            <p>Accounting feature is already baked in. No need to do extra accouting work.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-image">
+                                <img class="img-thumbnail" src="./images/reports.jpg" alt="accounting image">
+                            </div>
+                            <h3>Comprehensive Reports</h3>
+                            <p>Useful and important reports available anytime.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-image">
+                                <img class="img-thumbnail" src="./images/responsive.jpg" alt="accounting image">
+                            </div>
+                            <h3>Responsive Design</h3>
+                            <p>Work anywhere using your mobile phone, tablet, laptop or desktop.</p>
+                        </div>
+                    </div>
+                    <p class="lead">
+                        AND MANY MORE...
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="aboutus">
+            <div class="">
+                <div class="container-fluid">
+                    <h1>MEET THE TEAM</h1>
+                    <div class="team">
+                        <div class="team-member jfa">
+                            <div class="member-pic">
+                                <img class="rounded-circle" src="./images/blankprofile.jpg" alt="jfa picture">
+                            </div>
+                            <div class="member-name">
+                                Jojo Aquino
+                            </div>
+                        </div>
+                        <div class="team-member mng">
+                            <div class="member-pic">
+                                <img class="rounded-circle" src="./images/blankprofile.jpg" alt="mng picture">
+                            </div>
+                            <div class="member-name">
+                                Marvin Guerrero
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </article>
+
+    <script src="https://cdn.jsdelivr.net/bluebird/3.5.0/bluebird.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.2.5/polyfill.min.js"></script>
+    <script>
+        var subscribe = null;
+        (function() {
+            subscribe = subscribexxx;
+
+            function subscribexxx() {
+                document.getElementById("btnSubmit").disabled = true;
+                const email = document.getElementById("txtEmail").value;
+                postData('https://localhost:5001/api/subscribe', {
+                    email: email
+                }).then(function(response) {
+                    document.getElementById("btnSubmit").disabled = false;
+                    alert('Thank you for your interest.')
+                    document.getElementById("txtEmail").value = '';
+                })
+            }
+
+            function postData(url, data) {
+                // Default options are marked with *
+                return fetch(url, {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    mode: 'cors', // no-cors, cors, *same-origin
+                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    redirect: 'follow', // manual, *follow, error
+                    referrer: 'no-referrer', // no-referrer, *client
+                    body: JSON.stringify(data), // body data type must match "Content-Type" header
+                });
+            }
+        })();
+    </script>
+
+</body>
+
+
+</html>
