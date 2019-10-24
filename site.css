@@ -9,8 +9,26 @@ html {
     html {
         font-size: 12px;
     }
-    body {
-        background-color: blue;
+}
+
+@media screen and (max-width: 993px) {
+    #features .feature-container {
+        grid-template-columns: 100%;
+        grid-gap: 0px;
+    }
+    #aboutus .team {
+        grid-gap: 10px;
+    }
+}
+
+@media screen and (min-width: 994px) {
+    #features .feature-container {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 0px;
+    }
+    #aboutus .team {
+        grid-gap: 10px;
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -19,11 +37,16 @@ html {
 
 @media screen and (max-width: 600px) {
     html {
-        font-size: 8px;
+        font-size: 10px;
     }
     body {
         background-color: olive;
     }
+}
+
+#features .feature-container {
+    display: grid;
+    grid-gap: 0px;
 }
 
 h1 {
@@ -46,7 +69,7 @@ h1 {
 }
 
 #features {
-    height: 100vh;
+    min-height: 100vh;
     background-color: #e5e5e5;
     /* text-shadow: 2px 2px #686666; */
     display: flex;
@@ -54,15 +77,37 @@ h1 {
     justify-content: center;
 }
 
-#aboutus {
-    height: 100vh;
-    background-color: #bbba9d93;
+.feature-container {
     display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    height: 100%;
+}
+
+.feature {
+    height: 100%;
+    margin: 15px;
+    text-align: center;
+    background-color: rgb(250, 250, 250);
+    padding: 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+}
+
+.feature-image {
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+
+#aboutus {
+    min-height: calc(100vh - 40px);
+    background-color: #bbba9d93;
+    display: grid;
     align-items: center;
     justify-content: center;
     background-repeat: no-repeat;
     background-size: cover;
-    filter: grayscale();
 }
 
 .input-xl {
@@ -70,15 +115,18 @@ h1 {
 }
 
 .team {
-    display: flex;
+    display: grid;
     align-items: center;
     flex-flow: row nowrap;
     height: 100%;
-    background-color: #e5e5e5;
 }
 
 .team-member {
     margin: 10px;
+    background-color: #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .member-pic {
@@ -95,27 +143,10 @@ h1 {
     padding: 15px;
 }
 
-.feature-container {
-    display: flex;
-    align-items: center;
-    flex-flow: row nowrap;
-    height: 100%;
-}
-
-.feature {
-    height: 100%;
-    margin: 15px;
-    width: 40%;
+footer {
+    height: 40px;
     text-align: center;
-    background-color: rgb(250, 250, 250);
-    padding: 10px;
-    display: flex;
-    flex-flow: column;
-    justify-content: flex-end;
-}
-
-.feature-image {
-    height: 220px;
-    margin-bottom: 10px;
-    flex-grow: 1;
+    background-color: #e5e5e5;
+    padding-top: 12px;
+    color: #22222293
 }
