@@ -29,7 +29,7 @@
                         We offer <strong>free Kooperatiba-as-a-Service solutions</strong> to Community Development Fund cooperatives in the Philippines.
                     </p>
 
-                    <form onsubmit="submitemail()">
+                    <form onsubmit="return submitemail()">
                         <p>
                             <div class="form-group form-group-lg">
                                 <input type="email" class="form-control input-xl" name="txtEmail" id="txtEmail" aria-describedby="helpId" placeholder="your@email.com" required>
@@ -110,9 +110,10 @@
     </footer>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script>
         function submitemail() {
-            alert('submitemail');
+
             const email = document.getElementById("txtEmail").value;
             document.getElementById("btnSubmit").disabled = true;
             postData('https://email-bucket.azurewebsites.net/api/post', {
@@ -120,13 +121,31 @@
                 campaign: 'Kooperatiba'
             }).then(function(response) {
                 document.getElementById("btnSubmit").disabled = false;
-                alert('Thank you for your interest.')
                 document.getElementById("txtEmail").value = '';
-            })
+
+                let timerInterval
+                Swal.fire({
+                    title: 'You email was submitted!',
+                    html: 'This alert will close in <b></b> seconds.',
+                    type: 'success',
+                    timer: 5000,
+                    onBeforeOpen: () => {
+                        timerInterval = setInterval(() => {
+                            Swal.getContent().querySelector('b')
+                                .textContent = Math.ceil(swal.getTimerLeft() / 1000)
+                        }, 100)
+                    },
+                    onClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                });
+            });
+
+            return false;
         }
 
         function postData(url, data) {
-
+            console.log('posting data ' + url)
             return axios({
                 method: 'post',
                 url: url,
