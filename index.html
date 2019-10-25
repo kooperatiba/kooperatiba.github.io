@@ -29,14 +29,16 @@
                         We offer <strong>free Kooperatiba-as-a-Service solutions</strong> to Community Development Fund cooperatives in the Philippines.
                     </p>
 
-                    <p>
-                        <div class="form-group form-group-lg">
-                            <input type="text" class="form-control input-xl" name="txtEmail" id="txtEmail" aria-describedby="helpId" placeholder="email address" required>
-                        </div>
-                    </p>
-                    <p>
-                        <a id="btnSubmit" class="btn btn-success btn-lg" href="#" role="button" onclick="subscribe();">Submit</a>
-                    </p>
+                    <form onsubmit="submitemail()">
+                        <p>
+                            <div class="form-group form-group-lg">
+                                <input type="email" class="form-control input-xl" name="txtEmail" id="txtEmail" aria-describedby="helpId" placeholder="your@email.com" required>
+                            </div>
+                        </p>
+                        <p>
+                            <button id="btnSubmit" class="btn btn-success btn-lg" type="submit">Submit</button>
+                        </p>
+                    </form>
                 </div>
             </div>
         </section>
@@ -107,43 +109,34 @@
         Copyright 2019 <a href="mailto:jfaquinojr@gmail.com">jfaquinojr@gmail.com</a>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/bluebird/3.5.0/bluebird.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.2.5/polyfill.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        var subscribe = null;
-        (function() {
-            subscribe = real_subscribe;
+        function submitemail() {
+            alert('submitemail');
+            const email = document.getElementById("txtEmail").value;
+            document.getElementById("btnSubmit").disabled = true;
+            postData('https://email-bucket.azurewebsites.net/api/post', {
+                email: email,
+                campaign: 'Kooperatiba'
+            }).then(function(response) {
+                document.getElementById("btnSubmit").disabled = false;
+                alert('Thank you for your interest.')
+                document.getElementById("txtEmail").value = '';
+            })
+        }
 
-            function real_subscribe() {
-                document.getElementById("btnSubmit").disabled = true;
-                const email = document.getElementById("txtEmail").value;
-                postData('https://kooperatibaapi.azurewebsites.net/api/subscribe', {
-                    email: email
-                }).then(function(response) {
-                    document.getElementById("btnSubmit").disabled = false;
-                    alert('Thank you for your interest.')
-                    document.getElementById("txtEmail").value = '';
-                })
-            }
+        function postData(url, data) {
 
-            function postData(url, data) {
-                // Default options are marked with *
-                return fetch(url, {
-                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'cors', // no-cors, cors, *same-origin
-                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                    credentials: 'same-origin', // include, *same-origin, omit
-                    headers: {
-                        'Content-Type': 'application/json',
-                        // 'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    redirect: 'follow', // manual, *follow, error
-                    referrer: 'no-referrer', // no-referrer, *client
-                    body: JSON.stringify(data), // body data type must match "Content-Type" header
-                });
-            }
-        })();
+            return axios({
+                method: 'post',
+                url: url,
+                data: data,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            })
+        }
     </script>
 
 </body>
